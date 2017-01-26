@@ -40,7 +40,7 @@ void motorGroupControl(float groupSelect = 0, int speed = 0){
 	}
 }
 
-task joystickMacro()
+task joystickMacro()//All macros should run nearly instantaneously. 
 {
 	while(true){
 		joyCh1 = abs(vexRT[Ch1] - joyCh1Bias)>joystickTolerance ? vexRT[Ch1] - joyCh1Bias : 0;
@@ -167,5 +167,6 @@ task usercontrol()
 			while (vexRT[Btn7U]==1){}
 			calJoy();
 		}
+		EndTimeSlice();
 	}
 }
