@@ -1,18 +1,16 @@
 # README #
 
-## OUTDATED ##
-
-This is the 2016-2017 code repository for the VRC team Unprepared in Advance, operating from iTech Preparatory in Vancouver, WA.  
+This is the second and latest 2016-2017 code repository for the VRC team Unprepared in Advance, operating from iTech Preparatory in Vancouver, WA.  
 
 ## Testing ###
-See the [Testing](https://bitbucket.org/unpreparedinadvance/starstruck/wiki/Testing) page on the wiki for things to test.
+See the [Testing](https://bitbucket.org/unpreparedinadvance/starstruck2/wiki/Testing) page on the wiki for things to test.
 
 ## Contribute ###
 
-* [Submit an issue report](https://bitbucket.org/unpreparedinadvance/starstruck/issues/new)
-* Work on the [wiki](https://bitbucket.org/unpreparedinadvance/starstruck/wiki/Home)
-* [Create](https://bitbucket.org/unpreparedinadvance/starstruck/branch) and [work in](https://bitbucket.org/unpreparedinadvance/starstruck/branches/) a branch
-* [Test](https://bitbucket.org/unpreparedinadvance/starstruck/wiki/Testing)
+* [Submit an issue report](https://bitbucket.org/unpreparedinadvance/starstruck2/issues/new)
+* Work on the [wiki](https://bitbucket.org/unpreparedinadvance/starstruck2/wiki/Home)
+* [Create](https://bitbucket.org/unpreparedinadvance/starstruck2/branch) and [work in](https://bitbucket.org/unpreparedinadvance/starstruck2/branches/) a branch
+* [Test](https://bitbucket.org/unpreparedinadvance/starstruck2/wiki/Testing)
 
 ## Workflow ##
 
