@@ -12,14 +12,27 @@ void motorGroupControl(float groupSelect = 0, int speed = 0, int direction = 0, 
 		motor[port9] = speed;
 		motor[port10] = speed;
 		break;
-	case 1://Chassis - all
-		//Insert chassis code here. Add additional chassis-control cases as "case 1.x:"
+	case 1://Chassis - move
+		motor[chassisLeftFront] = sinDegrees(direction+45) * speed;
+		motor[chassisLeftRear] = cosDegrees(direction+45) * speed;
+		motor[chassisRightFront] = cosDegrees(direction+45) * speed;
+		motor[chassisRightRear] = sinDegrees(direction+45) * speed;
+		break;
+	case 1.1://Chassis - rotate
+		motor[chassisLeftFront]=speed;
+		motor[chassisLeftRear]=speed;
+		motor[chassisRightFront]=-speed;
+		motor[chassisRightRear]=-speed;
 		break;
 	case 2://Arm
-		//Insert arm code here. Add additional arm-control cases as "case 2.x:"
+		motor[armLeft1] = speed;
+		motor[armLeft2] = speed;
+		motor[armRight1] = speed;
+		motor[armRight2] = speed;
 		break;
 	case 3://Manipulator
-		//Insert manipulator code here. Add additional manipulator-control cases as "case 3.x:"
+		motor[clawLeft] = 127;
+		motor[clawRight] = 127;
 		break;
 	}
 }

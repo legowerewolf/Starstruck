@@ -8,7 +8,10 @@ task usercontrol()
 		switch(userControlChassisMode)
 		{
 		case 1://Tank control
-			//Insert tank-style control code here
+			motor[chassisLeftFront] = joyCh3;
+			motor[chassisLeftRear] = joyCh3;
+			motor[chassisRightFront] = joyCh2;
+			motor[chassisRightRear] = joyCh2;
 			break;
 		}
 		if (vexRT[Btn6D]==1){//Rotate between control modes
@@ -25,6 +28,14 @@ task usercontrol()
 				userControlChassisMode=1;
 			}
 		}
+
+		if (vexRT[Btn8U] == 1){motorGroupControl(2.0, 127);}
+		else if (vexRT[Btn8D] == 1){motorGroupControl(2.0, -127);}
+		else{motorGroupControl(2.0);}
+
+		if (vexRT[Btn8L] == 1){motorGroupControl(3.0, 127);}
+		else if (vexRT[Btn8R] == 1){motorGroupControl(3.0, -127);}
+		else{motorGroupControl(3.0);}
 
 		if (vexRT[Btn7U]==1){//Manual triggering of the OTF recalibration routine
 			while (vexRT[Btn7U]==1){}
