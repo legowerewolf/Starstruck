@@ -9,6 +9,10 @@ void pre_auton()
 
 	clearLCDLine(0);
 	clearLCDLine(1);
+	resetMotorEncoder(chassisLeftFront);
+	resetMotorEncoder(chassisLeftRear);
+	resetMotorEncoder(chassisRightFront);
+	resetMotorEncoder(chassisRightRear);
 
 	while (bIfiRobotDisabled)//Loop while the robot is disabled (not running under autonomous code or driver control)
 	{

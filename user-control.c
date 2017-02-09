@@ -1,8 +1,10 @@
 task usercontrol()
 {
 	startTask(joystickMacro);
-	int userControlChassisMode=1; //$tag:var
-	const int userControlChassisModeCount=1; //$tag:var
+
+	int userControlChassisMode=2; //$tag:var
+	const int userControlChassisModeCount=2; //$tag:var
+
 	while (true)
 	{
 		switch(userControlChassisMode)
@@ -12,6 +14,12 @@ task usercontrol()
 			motor[chassisLeftRear] = joyCh3;
 			motor[chassisRightFront] = joyCh2;
 			motor[chassisRightRear] = joyCh2;
+			break;
+		case 2://Arcade control
+			motor[chassisLeftFront] = joyCh2 + joyCh4 + joyCh1;
+			motor[chassisLeftRear] = joyCh2 + joyCh4 - joyCh1;
+			motor[chassisRightFront] = joyCh2 - joyCh4 - joyCh1;
+			motor[chassisRightRear]= joyCh2 - joyCh4 + joyCh1;
 			break;
 		}
 		if (vexRT[Btn6D]==1){//Rotate between control modes

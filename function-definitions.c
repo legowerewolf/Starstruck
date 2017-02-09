@@ -1,4 +1,5 @@
-void motorGroupControl(float groupSelect = 0, int speed = 0, int direction = 0, int distance = 0){
+void motorGroupControl(float groupSelect = 0, int speed = 0, int direction = 0, int distance = -1){
+	int clawTolerance = 100;
 	switch(groupSelect){
 	case 0://All motors
 		motor[port1] = speed;
@@ -31,8 +32,36 @@ void motorGroupControl(float groupSelect = 0, int speed = 0, int direction = 0, 
 		motor[armRight2] = speed;
 		break;
 	case 3://Manipulator
-		motor[clawLeft] = 127;
-		motor[clawRight] = 127;
+		//motor[clawLeft] = speed;
+		//motor[clawRight] = speed;
+
+		if (speed>0){
+			if (SensorValue[clawLeftAngle]<SensorValue[clawRightAngle]){
+				motor[clawLeft] = speed;
+				motor[clawRight] = 0;
+			}
+			else if (SensorValue[clawLeftAngle]>SensorValue[clawRightAngle]){
+				motor[clawLeft] = 0;
+				motor[clawRight] = speed;
+			}
+		}
+		else if (speed <0){
+			if (SensorValue[clawLeftAngle]<SensorValue[clawRightAngle]){
+				motor[clawLeft] = 0;
+				motor[clawRight] = speed;
+			}
+			else if (SensorValue[clawLeftAngle]>SensorValue[clawRightAngle]){
+				motor[clawLeft] = speed;
+				motor[clawRight] = 0;
+			}
+		}
+		else {
+			motor[clawLeft] = speed;
+			motor[clawRight] = speed;
+		}
+
 		break;
 	}
+}
+void setClawAngle(int angle = 0){ // angle is between 0 and 180.
 }
