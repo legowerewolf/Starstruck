@@ -36,23 +36,31 @@ void motorGroupControl(float groupSelect = 0, int speed = 0, int direction = 0, 
 		//motor[clawRight] = speed;
 
 		if (speed>0){
-			if (SensorValue[clawLeftAngle]<SensorValue[clawRightAngle]){
+			if (SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]<-clawTolerance){
 				motor[clawLeft] = speed;
 				motor[clawRight] = 0;
 			}
-			else if (SensorValue[clawLeftAngle]>SensorValue[clawRightAngle]){
+			else if (SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]>clawTolerance){
 				motor[clawLeft] = 0;
+				motor[clawRight] = speed;
+			}
+			else {
+				motor[clawLeft] = speed;
 				motor[clawRight] = speed;
 			}
 		}
 		else if (speed <0){
-			if (SensorValue[clawLeftAngle]<SensorValue[clawRightAngle]){
+			if (SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]<-clawTolerance){
 				motor[clawLeft] = 0;
 				motor[clawRight] = speed;
 			}
-			else if (SensorValue[clawLeftAngle]>SensorValue[clawRightAngle]){
+			else if (SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]>clawTolerance){
 				motor[clawLeft] = speed;
 				motor[clawRight] = 0;
+			}
+			else {
+				motor[clawLeft] = speed;
+				motor[clawRight] = speed;
 			}
 		}
 		else {
