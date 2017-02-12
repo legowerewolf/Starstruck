@@ -32,36 +32,8 @@ void motorGroupControl(float groupSelect = 0, int speed = 0, int direction = 0, 
 		motor[armRight2] = speed;
 		break;
 	case 3://Manipulator
-		//motor[clawLeft] = speed;
-		//motor[clawRight] = speed;
-
-		if (speed>0){
-			if (SensorValue[clawLeftAngle]<SensorValue[clawRightAngle]){
-				motor[clawLeft] = speed;
-				motor[clawRight] = 0;
-			}
-			else if (SensorValue[clawLeftAngle]>SensorValue[clawRightAngle]){
-				motor[clawLeft] = 0;
-				motor[clawRight] = speed;
-			}
-		}
-		else if (speed <0){
-			if (SensorValue[clawLeftAngle]<SensorValue[clawRightAngle]){
-				motor[clawLeft] = 0;
-				motor[clawRight] = speed;
-			}
-			else if (SensorValue[clawLeftAngle]>SensorValue[clawRightAngle]){
-				motor[clawLeft] = speed;
-				motor[clawRight] = 0;
-			}
-		}
-		else {
-			motor[clawLeft] = speed;
-			motor[clawRight] = speed;
-		}
-
+		motor[clawLeft] = ((speed>0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]<clawTolerance))||((speed<0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]>-clawTolerance)) ? speed : 0;
+		motor[clawRight] = ((speed<0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]<clawTolerance))||((speed>0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]>-clawTolerance)) ? speed : 0;
 		break;
 	}
-}
-void setClawAngle(int angle = 0){ // angle is between 0 and 180.
 }
