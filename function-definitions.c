@@ -35,6 +35,7 @@ void motorGroupControl(float groupSelect = 0, int speed = 0, int angle = 0, int 
 		motor[clawLeft] = ((speed>0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]<clawTolerance))||((speed<0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]>-clawTolerance)) ? speed : 0;
 		motor[clawRight] = ((speed<0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]<clawTolerance))||((speed>0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]>-clawTolerance)) ? speed : 0;
 		break;
+<<<<<<< HEAD
 	case 3.1: //Manipulator - angle control - angle is between 0 and 180. 0 degrees maps to ~350. 180 degrees maps to ~3450
 		//The tick value is determined by (angle * 17.22) + 350
 		int tickValueOfAngle = (0 <= angle && angle <= 180) ? round(angle * 17) + 350 : -1;
@@ -49,5 +50,7 @@ void motorGroupControl(float groupSelect = 0, int speed = 0, int angle = 0, int 
 			}
 		} while (isSerial && (abs(SensorValue[clawLeftAngle] - tickValueOfAngle)<=clawTolerance) && (abs(SensorValue[clawRightAngle] - tickValueOfAngle)<=clawTolerance)); //while it's running in serial mode AND it has NOT reached the completed angle
 			break;
+=======
+>>>>>>> 7eccfd98913a4b6116fae3e32418082bcabc41a4
 	}
 }

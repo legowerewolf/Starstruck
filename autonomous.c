@@ -1,4 +1,4 @@
-int auton = 1;
+int auton = 3;
 
 void pre_auton()
 {
@@ -68,6 +68,7 @@ task autonomous()
 	switch(auton){
 	case 1: //Left 1
 		//subroutine code here
+<<<<<<< HEAD
 		// BEFORE ENCODER USAGE
 		motorGroupControl(1.0, 127, 180);
 		wait1Msec(2000);
@@ -75,17 +76,31 @@ task autonomous()
 		wait1Msec(1250);
 		motorGroupControl(1.0, 127, 0);
 		wait1Msec(500);
+=======
+		motorGroupControl(1.0, 127, 180);
+		wait1Msec(2000);
+		motorGroupControl(1.0, 127, -90);
+		wait1Msec(1500);
+>>>>>>> 7eccfd98913a4b6116fae3e32418082bcabc41a4
 		motorGroupControl(1.0);
 		motorGroupControl(3, -127);
 		wait1Msec(2000);
 		motorGroupControl(3);
 		motorGroupControl(2, -127);
+<<<<<<< HEAD
 		motorGroupControl(1, 127, 180);
 		wait1Msec(500);
 		motorGroupControl(1);
 		wait1Msec(1000);
 		motorGroupControl(2);
 		wait1Msec(500);
+=======
+		wait1Msec(1500);
+		motorGroupControl(2);
+		motorGroupControl(1, 127, 180);
+		wait1Msec(500);
+		motorGroupControl(1);
+>>>>>>> 7eccfd98913a4b6116fae3e32418082bcabc41a4
 		motorGroupControl(3, 127);
 		wait1Msec(500);
 		break;
@@ -181,10 +196,13 @@ task autonomous()
 		//subroutine code here
 		break;
 	}
+<<<<<<< HEAD
 	//writeDebugStream("" + time1[T1]);
 	displayLCDNumber(0, 0, time1[T1]);
 
 
 
+=======
+>>>>>>> 7eccfd98913a4b6116fae3e32418082bcabc41a4
 	while(bIfiAutonomousMode){motorGroupControl();} //Stop autonomous code from looping after it has run once
 }
