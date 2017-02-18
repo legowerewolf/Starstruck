@@ -1,4 +1,4 @@
-int auton = 3;
+int auton = 1;
 
 void pre_auton()
 {
@@ -7,8 +7,14 @@ void pre_auton()
 
 	const int autonCount=6; //$tag:var
 
+	SensorType[in8] = sensorNone;
+	wait1Msec(1000);
+	SensorType[in8] = sensorGyro;
+	wait1Msec(2000);
+
 	clearLCDLine(0);
 	clearLCDLine(1);
+
 	resetMotorEncoder(chassisLeftFront);
 	resetMotorEncoder(chassisLeftRear);
 	resetMotorEncoder(chassisRightFront);
@@ -58,14 +64,39 @@ task autonomous()
 {
 	clearLCDLine(0);
 	clearLCDLine(1);
-
+	clearTimer(T1);
 	switch(auton){
 	case 1: //Left 1
 		//subroutine code here
+		// BEFORE ENCODER USAGE
 		motorGroupControl(1.0, 127, 180);
 		wait1Msec(2000);
-		motorGroupControl(1.0, 127, -90);
-		wait1Msec(1500);
+		motorGroupControl(1.0, 127, 270);
+		wait1Msec(1250);
+		motorGroupControl(1.0, 127, 0);
+		wait1Msec(500);
+		motorGroupControl(1.0);
+		motorGroupControl(3, -127);
+		wait1Msec(2000);
+		motorGroupControl(3);
+		motorGroupControl(2, -127);
+		motorGroupControl(1, 127, 180);
+		wait1Msec(500);
+		motorGroupControl(1);
+		wait1Msec(1000);
+		motorGroupControl(2);
+		wait1Msec(500);
+		motorGroupControl(3, 127);
+		wait1Msec(500);
+		break;
+	case 2: //Left 2
+		//subroutine code here
+		motorGroupControl(1.0, 127, 180);
+		wait1Msec(2000);
+		motorGroupControl(1.0, 127, 270);
+		wait1Msec(1250);
+		motorGroupControl(1.0, 127, 0);
+		wait1Msec(500);
 		motorGroupControl(1.0);
 		motorGroupControl(3, -127);
 		wait1Msec(2000);
@@ -78,9 +109,19 @@ task autonomous()
 		motorGroupControl(1);
 		motorGroupControl(3, 127);
 		wait1Msec(500);
-		break;
-	case 2: //Left 2
-		//subroutine code here
+		//
+		motorGroupControl(3, -127);
+		motorGroupControl(2, 127);
+		wait1Msec(1500);
+		motorGroupControl(2);
+		wait1Msec(500);
+		motorGroupControl(3);
+		motorGroupControl(1, 127);
+		wait1Msec(2000);
+		motorGroupControl(1);
+		motorGroupControl(3, -127);
+		wait1Msec(2000);
+		motorGroupControl(3);
 		break;
 	case 3: //Right 1
 		//subroutine code here
@@ -103,6 +144,35 @@ task autonomous()
 		break;
 	case 4: //Right 2
 		//subroutine code here
+		motorGroupControl(1.0, 127, 180);
+		wait1Msec(2000);
+		motorGroupControl(1.0, 127, 90);
+		wait1Msec(1500);
+		motorGroupControl(1.0);
+		motorGroupControl(3, -127);
+		wait1Msec(2000);
+		motorGroupControl(3);
+		motorGroupControl(2, -127);
+		wait1Msec(1500);
+		motorGroupControl(2);
+		motorGroupControl(1, 127, 180);
+		wait1Msec(500);
+		motorGroupControl(1);
+		motorGroupControl(3, 127);
+		wait1Msec(500);
+		//
+		motorGroupControl(3, -127);
+		motorGroupControl(2, 127);
+		wait1Msec(1500);
+		motorGroupControl(2);
+		wait1Msec(500);
+		motorGroupControl(3);
+		motorGroupControl(1, 127);
+		wait1Msec(2000);
+		motorGroupControl(1);
+		motorGroupControl(3, -127);
+		wait1Msec(2000);
+		motorGroupControl(3);
 		break;
 	case 5: //Programming skills
 		//subroutine code here
@@ -111,5 +181,10 @@ task autonomous()
 		//subroutine code here
 		break;
 	}
+	//writeDebugStream("" + time1[T1]);
+	displayLCDNumber(0, 0, time1[T1]);
+
+
+
 	while(bIfiAutonomousMode){motorGroupControl();} //Stop autonomous code from looping after it has run once
 }
