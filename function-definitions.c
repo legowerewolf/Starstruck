@@ -32,36 +32,8 @@ void motorGroupControl(float groupSelect = 0, int speed = 0, int angle = 0, int 
 		motor[armRight2] = speed;
 		break;
 	case 3://Manipulator
-		//motor[clawLeft] = speed;
-		//motor[clawRight] = speed;
-
-		if (speed>0){
-			if (SensorValue[clawLeftAngle]<SensorValue[clawRightAngle]){
-				motor[clawLeft] = speed;
-				motor[clawRight] = 0;
-			}
-			else if (SensorValue[clawLeftAngle]>SensorValue[clawRightAngle]){
-				motor[clawLeft] = 0;
-				motor[clawRight] = speed;
-			}
-		}
-		else if (speed <0){
-			if (SensorValue[clawLeftAngle]<SensorValue[clawRightAngle]){
-				motor[clawLeft] = 0;
-				motor[clawRight] = speed;
-			}
-			else if (SensorValue[clawLeftAngle]>SensorValue[clawRightAngle]){
-				motor[clawLeft] = speed;
-				motor[clawRight] = 0;
-			}
-		}
-		else {
-			motor[clawLeft] = speed;
-			motor[clawRight] = speed;
-		}
-
-		break;
-<<<<<<< HEAD
+		motor[clawLeft] = ((speed>0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]<clawTolerance))||((speed<0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]>-clawTolerance)) ? speed : 0;
+		motor[clawRight] = ((speed<0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]<clawTolerance))||((speed>0)&&(SensorValue[clawLeftAngle]-SensorValue[clawRightAngle]>-clawTolerance)) ? speed : 0;		break;
 	case 3.1: //Manipulator - angle control - angle is between 0 and 180. 0 degrees maps to ~350. 180 degrees maps to ~3450
 		//The tick value is determined by (angle * 17.22) + 350
 		int tickValueOfAngle = (0 <= angle && angle <= 180) ? round(angle * 17) + 350 : -1;
@@ -76,9 +48,5 @@ void motorGroupControl(float groupSelect = 0, int speed = 0, int angle = 0, int 
 			}
 		} while (isSerial && (abs(SensorValue[clawLeftAngle] - tickValueOfAngle)<=clawTolerance) && (abs(SensorValue[clawRightAngle] - tickValueOfAngle)<=clawTolerance)); //while it's running in serial mode AND it has NOT reached the completed angle
 			break;
-=======
->>>>>>> 7eccfd98913a4b6116fae3e32418082bcabc41a4
 	}
-}
-void setClawAngle(int angle = 0){ // angle is between 0 and 180.
 }
