@@ -1,4 +1,4 @@
-int auton = 3;
+int auton = 1;
 
 void pre_auton()
 {
@@ -19,17 +19,17 @@ void pre_auton()
 		displayLCDString(1, 0, "<<");
 		displayLCDString(1, 14, ">>");
 		switch(auton){//Insert LCD display code for names of autonomous subroutines here
-		case 1: //Left 1
-			displayLCDCenteredString(0, "Left 1");
+		case 1: //Red - Left
+			displayLCDCenteredString(0, "Red - Left");
 			break;
-		case 2: //Left 2
-			displayLCDCenteredString(0, "Left 2");
+		case 2: //Red - Right
+			displayLCDCenteredString(0, "Red - Right");
 			break;
 		case 3: //Blue - Left
-			displayLCDCenteredString(0, "Right 1");
+			displayLCDCenteredString(0, "Blue - Left");
 			break;
 		case 4: //Blue - Right
-			displayLCDCenteredString(0, "Right 2");
+			displayLCDCenteredString(0, "Blue - Right");
 			break;
 		case 5: //Programming Skills
 			displayLCDCenteredString(0, "Skills");
@@ -60,48 +60,16 @@ task autonomous()
 	clearLCDLine(1);
 
 	switch(auton){
-	case 1: //Left 1
-		//subroutine code here
-		motorGroupControl(1.0, 127, 180);
-		wait1Msec(2000);
-		motorGroupControl(1.0, 127, -90);
-		wait1Msec(1500);
-		motorGroupControl(1.0);
-		motorGroupControl(3, -127);
-		wait1Msec(2000);
-		motorGroupControl(3);
-		motorGroupControl(2, -127);
-		wait1Msec(1500);
-		motorGroupControl(2);
-		motorGroupControl(1, 127, 180);
-		wait1Msec(500);
-		motorGroupControl(1);
-		motorGroupControl(3, 127);
-		wait1Msec(500);
-		break;
-	case 2: //Left 2
+	case 1: //Red - Left
 		//subroutine code here
 		break;
-	case 3: //Right 1
+	case 2: //Red - Right
 		//subroutine code here
-		motorGroupControl(1.0, 127, 180);
-		wait1Msec(2000);
-		motorGroupControl(1.0, 127, 90);
-		wait1Msec(1500);
-		motorGroupControl(1.0);
-		motorGroupControl(3, -127);
-		wait1Msec(2000);
-		motorGroupControl(3);
-		motorGroupControl(2, -127);
-		wait1Msec(1500);
-		motorGroupControl(2);
-		motorGroupControl(1, 127, 180);
-		wait1Msec(500);
-		motorGroupControl(1);
-		motorGroupControl(3, 127);
-		wait1Msec(500);
 		break;
-	case 4: //Right 2
+	case 3: //Blue - Left
+		//subroutine code here
+		break;
+	case 4: //Blue - Right
 		//subroutine code here
 		break;
 	case 5: //Programming skills
@@ -111,5 +79,5 @@ task autonomous()
 		//subroutine code here
 		break;
 	}
-	while(bIfiAutonomousMode){motorGroupControl();} //Stop autonomous code from looping after it has run once
+	while(bIfiAutonomousMode){} //Stop autonomous code from looping after it has run once
 }
