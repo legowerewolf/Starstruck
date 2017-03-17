@@ -3,6 +3,7 @@
 #pragma config(Sensor, in2,    clawRightAngle, sensorPotentiometer)
 #pragma config(Sensor, in3,    armAngle,       sensorPotentiometer)
 #pragma config(Sensor, in4,    gyro,           sensorGyro)
+#pragma config(Sensor, dgtl1,  clock,          sensorDigitalOut)
 #pragma config(Sensor, I2C_1,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
 #pragma config(Sensor, I2C_2,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )
 #pragma config(Sensor, I2C_3,  ,               sensorQuadEncoderOnI2CPort,    , AutoAssign )

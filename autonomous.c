@@ -26,16 +26,16 @@ void pre_auton()
 		displayLCDString(1, 14, ">>");
 		switch(auton){//Insert LCD display code for names of autonomous subroutines here
 		case 1: //Red - Left
-			displayLCDCenteredString(0, "Red - Left");
+			displayLCDCenteredString(0, "Left 1");
 			break;
 		case 2: //Red - Right
-			displayLCDCenteredString(0, "Red - Right");
+			displayLCDCenteredString(0, "Right 1");
 			break;
 		case 3: //Blue - Left
-			displayLCDCenteredString(0, "Blue - Left");
+			displayLCDCenteredString(0, "Left 2");
 			break;
 		case 4: //Blue - Right
-			displayLCDCenteredString(0, "Blue - Right");
+			displayLCDCenteredString(0, "Right 2");
 			break;
 		case 5: //Programming Skills
 			displayLCDCenteredString(0, "Skills");
@@ -66,78 +66,13 @@ task autonomous()
 	clearLCDLine(1);
 	clearTimer(T1);
 	switch(auton){
-	case 1: //Red - Left
+	case 1: //Left 1
 		//subroutine code here
-
-		// BEFORE ENCODER USAGE
-		motorGroupControl(1.0, 127, 180);
-		wait1Msec(2000);
-		motorGroupControl(1.0, 127, 270);
-		wait1Msec(1250);
-		motorGroupControl(1.0, 127, 0);
-		wait1Msec(500);
-
-		motorGroupControl(1.0, 127, 180);
-		wait1Msec(2000);
-		motorGroupControl(1.0, 127, -90);
-		wait1Msec(1500);
-
-		motorGroupControl(1.0);
-		motorGroupControl(3, -127);
-		wait1Msec(2000);
-		motorGroupControl(3);
-		motorGroupControl(2, -127);
-
-		motorGroupControl(1, 127, 180);
-		wait1Msec(500);
-		motorGroupControl(1);
-		wait1Msec(1000);
-		motorGroupControl(2);
-		wait1Msec(500);
-
-		wait1Msec(1500);
-		motorGroupControl(2);
-		motorGroupControl(1, 127, 180);
-		wait1Msec(500);
-		motorGroupControl(1);
-
-		motorGroupControl(3, 127);
-		wait1Msec(500);
-
+#include "autonomous_left1.c"
 		break;
 	case 2: //Red - Right
 		//subroutine code here
-		motorGroupControl(1.0, 127, 180);
-		wait1Msec(2000);
-		motorGroupControl(1.0, 127, 270);
-		wait1Msec(1250);
-		motorGroupControl(1.0, 127, 0);
-		wait1Msec(500);
-		motorGroupControl(1.0);
-		motorGroupControl(3, -127);
-		wait1Msec(2000);
-		motorGroupControl(3);
-		motorGroupControl(2, -127);
-		wait1Msec(1500);
-		motorGroupControl(2);
-		motorGroupControl(1, 127, 180);
-		wait1Msec(500);
-		motorGroupControl(1);
-		motorGroupControl(3, 127);
-		wait1Msec(500);
-		//
-		motorGroupControl(3, -127);
-		motorGroupControl(2, 127);
-		wait1Msec(1500);
-		motorGroupControl(2);
-		wait1Msec(500);
-		motorGroupControl(3);
-		motorGroupControl(1, 127);
-		wait1Msec(2000);
-		motorGroupControl(1);
-		motorGroupControl(3, -127);
-		wait1Msec(2000);
-		motorGroupControl(3);
+#include "autonomous_right1.c"
 		break;
 	case 3: //Blue - Left
 		//subroutine code here
@@ -179,13 +114,14 @@ task autonomous()
 		break;
 	case 6: //Worst-case scenario
 		//subroutine code here
+		motorGroupControl(1.0, 127, 0);
+		wait1Msec(3000);
+		motorGroupControl(1.0, 127, 180);
+		wait1Msec(500);
+		motorGroupControl();
+		motorGroupControl(2.0, 127);
+		wait1Msec(1000);
 		break;
 	}
-	while(bIfiAutonomousMode){} //Stop autonomous code from looping after it has run once
-	//writeDebugStream("" + time1[T1]);
-	displayLCDNumber(0, 0, time1[T1]);
-
-
-
 	while(bIfiAutonomousMode){motorGroupControl();} //Stop autonomous code from looping after it has run once
 }

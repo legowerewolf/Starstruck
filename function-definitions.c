@@ -50,3 +50,17 @@ void motorGroupControl(float groupSelect = 0, int speed = 0, int angle = 0, int 
 			break;
 	}
 }
+
+void motors(int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8, int p9, int p10)
+{
+	motor[port1] = p1;
+	motor[port2] = p2;
+	motor[port3] = p3;
+	motor[port4] = p4;
+	motor[port5] = p5;
+	motor[port6] = p6;
+	motor[port7] = p7;
+	motor[port8] = p8;
+	motor[port9] = p9;
+	motor[port10] = p10;
+}
