@@ -79,35 +79,7 @@ task autonomous()
 		break;
 	case 4: //Blue - Right
 		//subroutine code here
-		motorGroupControl(1.0, 127, 180);
-		wait1Msec(2000);
-		motorGroupControl(1.0, 127, 90);
-		wait1Msec(1500);
-		motorGroupControl(1.0);
-		motorGroupControl(3, -127);
-		wait1Msec(2000);
-		motorGroupControl(3);
-		motorGroupControl(2, -127);
-		wait1Msec(1500);
-		motorGroupControl(2);
-		motorGroupControl(1, 127, 180);
-		wait1Msec(500);
-		motorGroupControl(1);
-		motorGroupControl(3, 127);
-		wait1Msec(500);
-		//
-		motorGroupControl(3, -127);
-		motorGroupControl(2, 127);
-		wait1Msec(1500);
-		motorGroupControl(2);
-		wait1Msec(500);
-		motorGroupControl(3);
-		motorGroupControl(1, 127);
-		wait1Msec(2000);
-		motorGroupControl(1);
-		motorGroupControl(3, -127);
-		wait1Msec(2000);
-		motorGroupControl(3);
+		#include "autonomous_right2.c"
 		break;
 	case 5: //Programming skills
 		//subroutine code here

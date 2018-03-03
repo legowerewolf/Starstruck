@@ -1,6 +1,6 @@
 task usercontrol()
 {
-	startTask(joystickMacro);
+	initalizeJoystickCalibrationRoutines()
 
 	clearDebugStream();
 	writeDebugStreamLine("//Battery Level: %f", nImmediateBatteryLevel); //Outputs 7860 with a new battery
@@ -15,16 +15,16 @@ task usercontrol()
 		switch(userControlChassisMode)
 		{
 		case 1://Tank control
-			motor[chassisLeftFront] = joyCh3;
-			motor[chassisLeftRear] = joyCh3;
-			motor[chassisRightFront] = joyCh2;
-			motor[chassisRightRear] = joyCh2;
+			motor[chassisLeftFront] = joystick[Ch3];
+			motor[chassisLeftRear] = joystick[Ch3];
+			motor[chassisRightFront] = joystick[Ch2];
+			motor[chassisRightRear] = joystick[Ch2];
 			break;
 		case 2://Arcade control
-			motor[chassisLeftFront] = joyCh2 + joyCh4 + joyCh1;
-			motor[chassisLeftRear] = joyCh2 + joyCh4 - joyCh1;
-			motor[chassisRightFront] = joyCh2 - joyCh4 - joyCh1;
-			motor[chassisRightRear]= joyCh2 - joyCh4 + joyCh1;
+			motor[chassisLeftFront] = joystick[Ch2] + joystick[Ch4] + joystick[Ch1];
+			motor[chassisLeftRear] = joystick[Ch2] + joystick[Ch4] - joystick[Ch1];
+			motor[chassisRightFront] = joystick[Ch2] - joystick[Ch4] - joystick[Ch1];
+			motor[chassisRightRear]= joystick[Ch2] - joystick[Ch4] + joystick[Ch1];
 			break;
 		}
 		if (vexRT[Btn6D]==1){//Rotate between control modes
